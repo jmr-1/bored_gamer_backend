@@ -6,8 +6,10 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+Ruby 6.0.2.1
 
 * System dependencies
+Front end is React SPA
 
 * Configuration
 
