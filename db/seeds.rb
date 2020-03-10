@@ -6,4 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'pry'
+
 api_key = Rails.application.credentials.project[:api_key]
+
+
+game = Game.new(name: "spirit island")
+user = User.new(name: "tester")
+
+binding.pry
