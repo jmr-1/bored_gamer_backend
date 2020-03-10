@@ -8,5 +8,14 @@ class GameTest < ActiveSupport::TestCase
     assert game.valid?
   end 
 
+  test 'new game has owner?' do 
+
+    game = Game.new 
+    user = User.new 
+    user.games << game 
+
+    assert_equal(user.games.length, 1)
+    assert_equal(user.games[0], game)
+  end 
   
 end

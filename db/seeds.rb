@@ -11,7 +11,17 @@ require 'pry'
 api_key = Rails.application.credentials.project[:api_key]
 
 
-game = Game.new(name: "spirit island")
-user = User.new(name: "tester")
+# game = Game.new(name: "spirit island")
+# user = User.new(name: "tester")
+# meetup = Meetup.new(title: "game meetup")
+# meetup.user = user
+# user2 = User.new(name: "tester 2")
+# meetup.users << user
+# meetup.users << user2
 
-binding.pry
+# collection = Collection.new(user: user, game: game)
+
+# meetup.collections << collection
+
+# binding.pry
+
