@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_184330) do
 
   create_table "meetup_user_games", force: :cascade do |t|
     t.integer "meetup_id"
-    t.integer "usergame_id"
+    t.integer "user_game_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_184330) do
   create_table "user_games", force: :cascade do |t|
     t.integer "user_id"
     t.integer "game_id"
-    t.boolean "favorite"
+    t.boolean "favorite", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
