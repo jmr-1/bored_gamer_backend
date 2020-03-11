@@ -47,3 +47,6 @@ gem "active_model_serializers", "~> 0.10.10"
 gem "faker", "~> 2.10"
 
 gem 'pry'
+
+#RestClient for JSON parsing
+gem 'rest-client'
