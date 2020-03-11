@@ -10,7 +10,7 @@ require 'pry'
 
 api_key = Rails.application.credentials.project[:api_key]
 
-
+#Used these for testing, distribute these on unit model tests
 # game = Game.new(name: "spirit island")
 # user = User.new(name: "tester")
 # meetup = Meetup.new(title: "game meetup")
@@ -18,10 +18,7 @@ api_key = Rails.application.credentials.project[:api_key]
 # user2 = User.new(name: "tester 2")
 # meetup.users << user
 # meetup.users << user2
-
 # collection = Collection.new(user: user, game: game)
-
 # meetup.collections << collection
-
 # binding.pry
 

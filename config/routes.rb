@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  #these routes are not used, api/v1 is where all controllers are located 
   # get 'users/index'
   # get 'users/show'
   # get 'users/create'
