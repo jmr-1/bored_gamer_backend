@@ -4,7 +4,7 @@ require 'pry'
 
 class Api::V1::GamesController < ApplicationController
 
-    skip_before_action :authorized, only: [:index, :show]
+    skip_before_action :authorized, only: [:index, :show, :db_show]
 
     
     def getResponse
@@ -21,13 +21,19 @@ class Api::V1::GamesController < ApplicationController
         games = self.getResponse
         render json: games["games"] 
     end 
-    
-    def show
 
+    def db_show
+        
         #this will only show games that are actually persisting in the database
         db_games = Game.all
         render json: db_games        
     end 
+    
+    def show
+        game = Game.all.find_by(id: params[:id])
+        render json: game
+    end 
+    
     
 
      
