@@ -1,18 +1,18 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::CollectionControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get users_index_url
+    get api_v1_collection_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get users_show_url
+    get api_v1_collection_show_url
     assert_response :success
   end
 
   test "should get create" do
-    get users_create_url
+    get api_v1_collection_create_url
     assert_response :success
   end
 
