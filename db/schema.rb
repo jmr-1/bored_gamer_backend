@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2020_03_12_202638) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "favorite", null: false
-    t.boolean "owned", null: false
+    t.boolean "favorite", default: false
+    t.boolean "owned", default: false
   end
 
   create_table "games", force: :cascade do |t|
