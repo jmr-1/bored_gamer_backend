@@ -23,7 +23,10 @@ class Api::V1::GamesController < ApplicationController
     end 
     
     def show
-        
+
+        #this will only show games that are actually persisting in the database
+        db_games = Game.all
+        render json: db_games        
     end 
     
 

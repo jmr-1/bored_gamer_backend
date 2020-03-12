@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-    namespace :v1 do
-      get 'collection/index'
-      get 'collection/show'
-      get 'collection/create'
-    end
-  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api do
@@ -16,6 +9,9 @@ Rails.application.routes.draw do
       resources :games, only: [:index, :show]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
+      get '/collections', to: 'collections#index'
+      get '/collections/show', to: 'collections#show'
+      post '/collections/create', to: 'collections#create'
     end
   end 
 end
