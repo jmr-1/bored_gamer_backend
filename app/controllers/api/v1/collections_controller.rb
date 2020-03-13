@@ -29,12 +29,13 @@ class Api::V1::CollectionsController < ApplicationController
       game.max_playtime = params[:collection][:max_playtime].to_i
     end 
 
-    collection = Collection.new
-    collection.user = user
-    collection.game = game 
+    collection = Collection.find_or_create_by(user: user, game: game) do |collection|
+      collection.user = user
+      collection.game = game 
+    end 
     updated_key = params[:collection][:updated]
     collection[updated_key] = true 
-    collection.save 
+    collection.save
 
     render json: {status: "new collection successful", gameTest: game, user: user, collection: collection }
   end
