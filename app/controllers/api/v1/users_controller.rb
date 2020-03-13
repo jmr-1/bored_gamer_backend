@@ -54,7 +54,7 @@ class Api::V1::UsersController < ApplicationController
         end 
 
         #renders a user id's collection and includes favorite/owned status 
-        render json: new_collection
+        render json: {user: user, user_collection: new_collection}
     end 
 
     private 

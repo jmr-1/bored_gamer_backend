@@ -39,8 +39,36 @@ class Api::V1::CollectionsController < ApplicationController
 
     # render json: {status: "new collection successful", gameTest: game, user: user, collection: collection }
     user_collection = Collection.all.select{|collection| collection.user == user}
-    user_collection = user_collection.map{|collection| collection.game}
-    render json: {user_collection: user_collection}
+    # user_collection = user_collection.map{|collection| collection.game}
+
+    #same code as users#user_collection below
+    new_collection = []
+
+        user_collection.each do |collection|
+
+            new_obj = {}
+            game = collection.game 
+
+            new_obj["game_id"] = game.game_id 
+            new_obj["name"] = game.name 
+            new_obj["year_published"] = game.year_published
+            new_obj["min_players"] = game.min_players
+            new_obj["max_players"] = game.max_players 
+            new_obj["description"] = game.description 
+            new_obj["image_url"] = game.image_url 
+            new_obj["max_playtime"] = game.max_playtime
+            new_obj["min_playtime"] = game.min_playtime  
+            new_obj["favorite"] = collection.favorite
+            new_obj["owned"] = collection.owned
+
+            new_collection << new_obj
+        end 
+      
+        #same code as users#user_collection above 
+        
+        #could try redirecting to users_controller#user_collection instead 
+        #renders a user id's collection and includes favorite/owned status 
+    render json: {user: user, user_collection: new_collection}
   end
 
 
