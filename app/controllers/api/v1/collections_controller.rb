@@ -37,7 +37,10 @@ class Api::V1::CollectionsController < ApplicationController
     collection[updated_key] = true 
     collection.save
 
-    render json: {status: "new collection successful", gameTest: game, user: user, collection: collection }
+    # render json: {status: "new collection successful", gameTest: game, user: user, collection: collection }
+    user_collection = Collection.all.select{|collection| collection.user == user}
+    user_collection = user_collection.map{|collection| collection.game}
+    render json: {user_collection: user_collection}
   end
 
 
