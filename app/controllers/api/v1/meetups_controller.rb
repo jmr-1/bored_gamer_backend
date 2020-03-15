@@ -1,6 +1,6 @@
 class Api::V1::MeetupsController < ApplicationController
 
-    skip_before_action :authorized, only: [:index]
+    skip_before_action :authorized, only: [:index, :create]
 
     def index 
 
@@ -9,6 +9,15 @@ class Api::V1::MeetupsController < ApplicationController
     end 
 
     def create
+
+
+        render json: {status: "received"}
+    end 
+
+
+    private 
+    
+    def meetups_params
 
     end 
 end
