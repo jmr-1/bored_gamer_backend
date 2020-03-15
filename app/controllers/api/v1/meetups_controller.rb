@@ -8,5 +8,7 @@ class Api::V1::MeetupsController < ApplicationController
         render json: {status: "meetups go here", meetups: meetups}
     end 
 
+    def create
 
+    end 
 end

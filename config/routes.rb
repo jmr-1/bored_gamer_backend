@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
       resources :users, only: [:create, :index]
       resources :games, only: [:index, :show]
-      resources :meetups, only: [:index]
+      resources :meetups, only: [:index, :create]
       get '/db_games', to: 'games#db_show' #need to make different, otherwise games/:id will try to search for games/db_games
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
