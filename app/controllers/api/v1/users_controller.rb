@@ -29,7 +29,6 @@ class Api::V1::UsersController < ApplicationController
 
         user = User.find_by(id: params[:id])
         user_collection = Collection.all.select{|collection| collection.user == user}
-        # user_collection = user_collection.map{|collection| collection.game}
 
         new_collection = []
 
@@ -38,6 +37,7 @@ class Api::V1::UsersController < ApplicationController
             new_obj = {}
             game = collection.game 
 
+            new_obj["id"] = game.id
             new_obj["game_id"] = game.game_id 
             new_obj["name"] = game.name 
             new_obj["year_published"] = game.year_published

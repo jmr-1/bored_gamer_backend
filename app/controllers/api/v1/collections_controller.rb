@@ -49,6 +49,7 @@ class Api::V1::CollectionsController < ApplicationController
             new_obj = {}
             game = collection.game 
 
+            new_obj["id"] = game.id
             new_obj["game_id"] = game.game_id 
             new_obj["name"] = game.name 
             new_obj["year_published"] = game.year_published

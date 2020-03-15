@@ -10,7 +10,7 @@ class Api::V1::MeetupsController < ApplicationController
 
     def create
 
-
+        byebug 
         render json: {status: "received"}
     end 
 
