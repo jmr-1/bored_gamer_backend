@@ -44,6 +44,7 @@ class Api::V1::MeetupsController < ApplicationController
 
             newObj = {}
             newObj["meetup_details"] = meetup
+            newObj["host"] = meetup.user
             newObj["participants"] = meetup.users
             
             meetup_collection = []
@@ -57,6 +58,6 @@ class Api::V1::MeetupsController < ApplicationController
             detailed_array << newObj
         end 
 
-        render json: {status: "detailed meetups go here", meetups: detailed_array}
+        render json: detailed_array
     end 
 end
