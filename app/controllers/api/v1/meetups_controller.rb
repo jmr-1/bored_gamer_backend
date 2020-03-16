@@ -30,8 +30,20 @@ class Api::V1::MeetupsController < ApplicationController
             end 
         end 
         meetup.save
+
+        #formatted the meetup post request to render the same info as detailed_meetups. Both will render components in a standard way.
+        meetup_collection = []
+        meetup.collections.each do |collection|
+            collObj = {}
+            collObj["owner"] = collection.user
+            collObj["game"] = collection.game
+            meetup_collection << collObj
+        end 
+        
+        newObj = {}
+        newObj["collection"] = meetup_collection
          
-        render json: {status: "received", meetup: meetup, participants: meetup.users, collection: meetup.collections}
+        render json: {status: "received", meetup_details: meetup, host: meetup.user, participants: meetup.users, collection: newObj["collection"]}
     end 
 
     def detailed_meetups
