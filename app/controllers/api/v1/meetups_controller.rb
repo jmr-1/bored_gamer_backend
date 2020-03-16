@@ -1,12 +1,12 @@
 class Api::V1::MeetupsController < ApplicationController
 
     #remove create before deployment 
-    skip_before_action :authorized, only: [:index, :create]
+    skip_before_action :authorized, only: [:index, :create, :detailed_meetups]
 
     def index 
 
         meetups = Meetup.all
-        render json: {status: "meetups go here", meetups: meetups}
+        render json: meetups
     end 
 
     def create
@@ -32,5 +32,24 @@ class Api::V1::MeetupsController < ApplicationController
         meetup.save
          
         render json: {status: "received", meetup: meetup, participants: meetup.users, collection: meetup.collections}
+    end 
+
+    def detailed_meetups
+
+        meetups = Meetup.all 
+
+        detailed_array = []
+
+        meetups.each do |meetup|
+
+            newObj = {}
+            newObj["meetup_details"] = meetup
+            newObj["games"] = meetup.collections
+            newObj["participants"] = meetup.users
+
+            detailed_array << newObj
+        end 
+
+        render json: {status: "detailed meetups go here", meetups: detailed_array}
     end 
 end
