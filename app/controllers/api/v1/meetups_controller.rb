@@ -11,14 +11,15 @@ class Api::V1::MeetupsController < ApplicationController
 
     def create
 
-        byebug 
-        render json: {status: "received"}
-    end 
-
-
-    private 
-    
-    def meetups_params
-
+        meetup = Meetup.new(
+            title: params[:form][:event],
+            date: params[:form][:date],
+            location: params[:form][:location],
+            other_games_allowed: params[:form][:allowed]
+        )
+        user = User.find_by(id: params[:profile][:id])
+        meetup.user = user 
+         
+        render json: {status: "received", meetup: meetup, participants: meetup.users}
     end 
 end
