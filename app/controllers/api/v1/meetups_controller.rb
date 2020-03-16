@@ -1,5 +1,6 @@
 class Api::V1::MeetupsController < ApplicationController
 
+    #remove create before deployment 
     skip_before_action :authorized, only: [:index, :create]
 
     def index 
