@@ -19,6 +19,7 @@ class Api::V1::MeetupsController < ApplicationController
         )
         user = User.find_by(id: params[:profile][:id])
         meetup.user = user 
+        meetup.users << user
          
         render json: {status: "received", meetup: meetup, participants: meetup.users}
     end 
