@@ -44,9 +44,16 @@ class Api::V1::MeetupsController < ApplicationController
 
             newObj = {}
             newObj["meetup_details"] = meetup
-            newObj["games"] = meetup.collections
             newObj["participants"] = meetup.users
-
+            
+            meetup_collection = []
+            meetup.collections.each do |collection|
+                collObj = {}
+                collObj["owner"] = collection.user
+                collObj["game"] = collection.game
+                meetup_collection << collObj
+            end 
+            newObj["collection"] = meetup_collection
             detailed_array << newObj
         end 
 
