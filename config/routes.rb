@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       post '/collections/create', to: 'collections#create'
       get '/users/collection/:id', to: 'users#user_collection' #using id, find the collection status of a user 
       get '/meetups/detailed', to: 'meetups#detailed_meetups'
-      post '/meetups/:meetupId/:userId', to: 'meetups#add_or_remove_user_to_meetup'
+      post '/meetups/join', to: 'meetups#add_or_remove_user_to_meetup'
     end
   end 
 end

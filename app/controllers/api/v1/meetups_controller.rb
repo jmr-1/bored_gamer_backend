@@ -1,7 +1,7 @@
 class Api::V1::MeetupsController < ApplicationController
 
     #remove create before deployment 
-    skip_before_action :authorized, only: [:index, :create, :detailed_meetups]
+    skip_before_action :authorized, only: [:index, :create, :detailed_meetups, :add_or_remove_user_to_meetup]
 
     def index 
 
@@ -74,7 +74,9 @@ class Api::V1::MeetupsController < ApplicationController
     end 
 
     def add_or_remove_user_to_meetup
+        user = User.find_by(id: params[:user])
+        meetup = Meetup.find_by(id: params[:meetup])
 
-        render json: {status: "ok"}
+        render json: {status: "ok", user: user, meetup: meetup, params: params}
     end 
 end
