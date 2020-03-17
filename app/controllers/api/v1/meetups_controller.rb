@@ -79,6 +79,8 @@ class Api::V1::MeetupsController < ApplicationController
         result = meetup.users.find{|member| member == user }
         if(!result)
             meetup.users << user
+        elsif(result)
+            meetup.users.delete(user)
         end 
 
         meetups = Meetup.all 
