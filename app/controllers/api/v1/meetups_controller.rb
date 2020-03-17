@@ -72,4 +72,9 @@ class Api::V1::MeetupsController < ApplicationController
 
         render json: detailed_array
     end 
+
+    def add_or_remove_user_to_meetup
+
+        render json: {status: "ok"}
+    end 
 end
