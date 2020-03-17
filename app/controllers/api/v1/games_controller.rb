@@ -10,12 +10,12 @@ class Api::V1::GamesController < ApplicationController
     #testing dynamic array: searchParams=["&name=cata", "&fuzzy_match=true"]
     #by default, will only grab the basic 100
 
-    def getResponse(searchParams=[])
+    def getResponse(search_params=[])
         api_key = Rails.application.credentials.project[:api_key]
         client_id = "client_id=#{api_key}"
         base_url = "https://www.boardgameatlas.com/api/search?"+client_id
 
-        for i in searchParams do 
+        for i in search_params do 
             base_url += i
         end 
 
@@ -24,7 +24,14 @@ class Api::V1::GamesController < ApplicationController
         return games_hash 
     end 
 
+    def searched_games
 
+        #search paramaters should be an array of search strings
+        search_params = []
+
+        games = self.getResponse(search_params)
+        render json: games["games"]
+    end 
 
     def index 
         games = self.getResponse
