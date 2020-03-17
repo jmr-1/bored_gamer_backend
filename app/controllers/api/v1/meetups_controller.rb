@@ -76,7 +76,30 @@ class Api::V1::MeetupsController < ApplicationController
     def add_or_remove_user_to_meetup
         user = User.find_by(id: params[:user])
         meetup = Meetup.find_by(id: params[:meetup])
+        result = meetup.users.find{|member| member == user }
+        if(!result)
+            meetup.users << user
+        end 
 
-        render json: {status: "ok", user: user, meetup: meetup, params: params}
+        meetups = Meetup.all 
+        detailed_array = []
+        meetups.each do |meetup|
+            newObj = {}
+            newObj["meetup_details"] = meetup
+            newObj["host"] = meetup.user
+            newObj["participants"] = meetup.users
+            
+            meetup_collection = []
+            meetup.collections.each do |collection|
+                collObj = {}
+                collObj["owner"] = collection.user
+                collObj["game"] = collection.game
+                meetup_collection << collObj
+            end 
+            newObj["collection"] = meetup_collection
+            detailed_array << newObj
+        end 
+
+        render json: detailed_array
     end 
 end
