@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
     has_secure_password
     validates :username, uniqueness: {case_sensitive: false}
+    validates :name, :bio, presence: true
 
     has_many :collections
     has_many :games, through: :collections
