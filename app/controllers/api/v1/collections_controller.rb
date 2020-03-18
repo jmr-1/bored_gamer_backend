@@ -35,6 +35,8 @@ class Api::V1::CollectionsController < ApplicationController
     end 
     updated_key = params[:collection][:updated]
 
+    #regression test working, new feature working. Can later refactor to one line:
+    # collection[updated_key] = !collection[updated_key]
     if !collection[updated_key] #remove line 38 and 40 if this doesn't work for the positive.
       collection[updated_key] = true  #then regression test and add the opposite (unfavorite/disown a game)
     elsif collection[updated_key]
