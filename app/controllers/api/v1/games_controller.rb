@@ -25,12 +25,12 @@ class Api::V1::GamesController < ApplicationController
     end 
 
     def searched_games
-
         #search paramaters should be an array of search strings
         search_params = []
 
-        games = self.getResponse(search_params)
-        render json: games["games"]
+        # games = self.getResponse(search_params)
+        # render json: games["games"]
+        render json: {status: "connected to BE"}
     end 
 
     def index 

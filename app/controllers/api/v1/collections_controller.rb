@@ -34,7 +34,13 @@ class Api::V1::CollectionsController < ApplicationController
       collection.game = game 
     end 
     updated_key = params[:collection][:updated]
-    collection[updated_key] = true 
+
+    if !collection[updated_key] #remove line 38 and 40 if this doesn't work for the positive.
+      collection[updated_key] = true  #then regression test and add the opposite (unfavorite/disown a game)
+    elsif collection[updated_key]
+      collection[updated_key] = false
+    end 
+    
     collection.save
 
     # render json: {status: "new collection successful", gameTest: game, user: user, collection: collection }
