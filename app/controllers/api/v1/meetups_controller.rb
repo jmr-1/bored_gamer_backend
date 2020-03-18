@@ -1,7 +1,7 @@
 class Api::V1::MeetupsController < ApplicationController
 
     #remove create before deployment 
-    skip_before_action :authorized, only: [:index, :create, :detailed_meetups, :add_or_remove_user_to_meetup]
+    skip_before_action :authorized, only: [:index, :create, :detailed_meetups, :add_or_remove_user_to_meetup, :add_games_to_meetup]
 
     def index 
 
@@ -103,5 +103,12 @@ class Api::V1::MeetupsController < ApplicationController
         end 
 
         render json: detailed_array
+    end 
+
+
+    def add_games_to_meetup
+
+
+        render json: {status: "FE-BE link established", userID: params[:userID], meetupID: params[:meetupID], chosenGames: params[:chosenGames]}
     end 
 end
