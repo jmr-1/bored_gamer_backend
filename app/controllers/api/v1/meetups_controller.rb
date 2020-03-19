@@ -106,7 +106,7 @@ class Api::V1::MeetupsController < ApplicationController
     end 
 
 
-    def add_games_to_meetup
+    def modify_games_in_meetup
 
         user = User.find_by(id: params[:userID])
         meetup = Meetup.find_by(id: params[:meetupID])
@@ -118,6 +118,8 @@ class Api::V1::MeetupsController < ApplicationController
                 
                 if !meetup.collections.include?(game)
                     meetup.collections << game 
+                elsif meetup.collections.find{|collection_game| collection_game == game }
+                    meetup.collections.delete(game)
                 end 
             end 
         end 

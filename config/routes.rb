@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       get '/meetups/detailed', to: 'meetups#detailed_meetups'
       post '/meetups/join', to: 'meetups#add_or_remove_user_to_meetup'
       get '/games/search', to: 'games#searched_games' #can take in any number of search parameters
-      post '/meetups/addgame', to: 'meetups#add_games_to_meetup'
+      post '/meetups/addgame', to: 'meetups#modify_games_in_meetup'
     end
   end 
 end
