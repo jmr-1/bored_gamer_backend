@@ -108,7 +108,29 @@ class Api::V1::MeetupsController < ApplicationController
 
     def add_games_to_meetup
 
+        user = User.find_by(id: params[:userID])
+        meetup = Meetup.find_by(id: params[:meetupID])
 
-        render json: {status: "FE-BE link established", userID: params[:userID], meetupID: params[:meetupID], chosenGames: params[:chosenGames]}
+        chosen_games = params[:chosenGames]
+        if chosen_games.length >= 1 
+            chosen_games.each do |game_id|
+                game = Collection.find_by(game_id: game_id, user_id: user.id)
+                
+                if !meetup.collections.include?(game)
+                    meetup.collections << game 
+                end 
+            end 
+        end 
+        meetup_collection = []
+        meetup.collections.each do |collection|
+            collObj = {}
+            collObj["owner"] = collection.user
+            collObj["game"] = collection.game
+            meetup_collection << collObj
+        end 
+
+        render json: {meetup_details: meetup, host: meetup.user, participants: meetup.users, collection: meetup_collection}
+
+        # render json: {status: "FE-BE link established", user: user, meetup: meetup, chosenGames: params[:chosenGames], meetupGames: meetup.collections}
     end 
 end
