@@ -11,6 +11,7 @@ class Api::V1::GamesController < ApplicationController
     #by default, will only grab the basic 100
 
     def getResponse(search_params=[])
+
         api_key = Rails.application.credentials.project[:api_key]
         client_id = "client_id=#{api_key}"
         base_url = "https://www.boardgameatlas.com/api/search?"+client_id
@@ -28,9 +29,18 @@ class Api::V1::GamesController < ApplicationController
         #search paramaters should be an array of search strings
         search_params = []
 
-        # games = self.getResponse(search_params)
-        # render json: games["games"]
-        render json: {status: "connected to BE"}
+        byebug
+
+        if(params[:gameID])
+            search_params << "&ids=#{params[:gameID]}"
+        end 
+        if(params[:kickstarter])
+            search_params << "&kickstarter=true"
+        end 
+
+
+        games = self.getResponse(search_params)
+        render json: {parameters: params, result: games["games"]}
     end 
 
     def index 
