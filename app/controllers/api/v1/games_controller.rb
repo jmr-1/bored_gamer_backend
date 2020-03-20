@@ -28,8 +28,7 @@ class Api::V1::GamesController < ApplicationController
     def searched_games
         #search paramaters should be an array of search strings
         search_params = []
-
-        byebug
+        
 
         if(params[:gameID])
             search_params << "&ids=#{params[:gameID]}"
@@ -37,7 +36,22 @@ class Api::V1::GamesController < ApplicationController
         if(params[:kickstarter])
             search_params << "&kickstarter=true"
         end 
-
+        if(params[:designer])
+            search_params << "&designer=#{params[:designer]}"
+        end 
+        if(params[:title])
+            search_params << "&name=#{params[:title]}"
+        end 
+        if(params[:min_players])
+            search_params << "&min_players=#{params[:min_players]}"
+        end 
+        if(params[:max_players])
+            search_params << "&min_players=#{params[:max_players]}"
+        end 
+        if(params[:year_published])
+            search_params << "&year_published=#{params[:year_published]}"
+        end 
+        
 
         games = self.getResponse(search_params)
         render json: {parameters: params, result: games["games"]}
