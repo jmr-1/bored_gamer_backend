@@ -25,6 +25,7 @@ class Api::V1::GamesController < ApplicationController
         return games_hash 
     end 
 
+
     def searched_games
         #search paramaters should be an array of search strings
         search_params = []
@@ -51,10 +52,15 @@ class Api::V1::GamesController < ApplicationController
         if(params[:year_published])
             search_params << "&year_published=#{params[:year_published]}"
         end 
-        
+        if(params[:random])
+            search_params << "&random=true"
+        end 
+        if(params[:fuzzy_match])
+            search_params << "&fuzzy_match=true"
+        end 
 
-        games = self.getResponse(search_params)
-        render json: {parameters: params, result: games["games"]}
+        result = self.getResponse(search_params)
+        render json: {parameters: params, result: result["games"], random: result["game"]}
     end 
 
     def index 
