@@ -4,7 +4,7 @@ require 'pry'
 
 class Api::V1::GamesController < ApplicationController
 
-    skip_before_action :authorized, only: [:index, :show, :db_show, :searched_games]
+    skip_before_action :authorized, only: [:index, :show, :db_show, :searched_games, :getResponse]
 
 
     #testing dynamic array: searchParams=["&name=cata", "&fuzzy_match=true"]
