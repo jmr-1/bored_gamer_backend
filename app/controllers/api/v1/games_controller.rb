@@ -63,13 +63,6 @@ class Api::V1::GamesController < ApplicationController
         render json: {parameters: params, result: result["games"], random: result["game"]}
     end 
 
-
-    def get_searched_games
-
-        game = self.getResponse(["&ids=#{params[:id]}"])
-        render json: {result: game["games"]}
-    end 
-
     def index 
         games = self.getResponse
         render json: games["games"] 
