@@ -4,7 +4,7 @@ require 'pry'
 
 class Api::V1::GamesController < ApplicationController
 
-    skip_before_action :authorized, only: [:index, :show, :db_show, :searched_games, :getResponse]
+    skip_before_action :authorized, only: [:index, :show, :db_show, :searched_games, :getResponse, :get_searched_games]
 
 
     #testing dynamic array: searchParams=["&name=cata", "&fuzzy_match=true"]
@@ -61,6 +61,13 @@ class Api::V1::GamesController < ApplicationController
 
         result = self.getResponse(search_params)
         render json: {parameters: params, result: result["games"], random: result["game"]}
+    end 
+
+
+    def get_searched_games
+
+        game = self.getResponse(["&ids=#{params[:id]}"])
+        render json: {result: game["games"]}
     end 
 
     def index 
