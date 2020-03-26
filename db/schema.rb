@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 2020_03_23_203801) do
 
   create_table "invites", force: :cascade do |t|
     t.integer "inviter_id"
-    t.integer "invitee_id"
+    t.integer "receiver_id"
     t.integer "meetup_id"
     t.string "description"
-    t.integer "status"
+    t.integer "status", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
