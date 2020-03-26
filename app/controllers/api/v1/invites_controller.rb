@@ -1,6 +1,6 @@
 class Api::V1::InvitesController < ApplicationController
 
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create, :index, :user_invites]
 
     def index 
         invites = Invite.all 
@@ -25,7 +25,7 @@ class Api::V1::InvitesController < ApplicationController
             invite.inviter = sender
             invite.receiver = receiver 
             invite.description = description 
-            # invite.save 
+            invite.save 
             new_invite_obj = {}
             new_invite_obj["invite_details"] = invite 
             new_invite_obj["receiver"] = invite.receiver
@@ -39,4 +39,23 @@ class Api::V1::InvitesController < ApplicationController
         render json: {invites_sent: invites_sent }
     end 
 
+    def user_invites 
+
+        user = User.find_by(id: params[:id])
+
+        users_invites = Invite.all.select{|invite| invite.receiver == user || invite.inviter == user}
+
+        invites = []
+
+        users_invites.each do |invite|
+            new_invite_obj = {}
+            new_invite_obj["invite_details"] = invite
+            new_invite_obj["receiver"] = invite.receiver
+            new_invite_obj["inviter"] = invite.inviter
+            new_invite_obj["meetup"] = invite.meetup 
+            invites << new_invite_obj
+        end 
+
+        render json: {user: user, users_invites: invites}
+    end 
 end

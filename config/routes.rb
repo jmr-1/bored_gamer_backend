@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       post '/games/search', to: 'games#searched_games' #can take in any number of search parameters
       post '/meetups/addgame', to: 'meetups#modify_games_in_meetup'
       post '/invites/create', to: 'invites#create'
+      get '/invites/user/:id', to: 'invites#user_invites'
+      get '/invites', to: 'invites#index'
     end
   end 
 end
