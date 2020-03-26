@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       post '/invites/create', to: 'invites#create'
       get '/invites/user/:id', to: 'invites#user_invites'
       get '/invites', to: 'invites#index'
+      post '/invites/reply', to: 'invites#reply'
     end
   end 
 end
