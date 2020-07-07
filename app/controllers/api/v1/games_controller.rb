@@ -19,8 +19,14 @@ class Api::V1::GamesController < ApplicationController
         # As of 2020.8.1, API for board game atlas will be changing from www. to api.
         # Change base_url on 2020.8.1 in order to main functionality.
 
+        new_base_url = "https://api.boardgameatlas.com/api/search?"+client_id
+
         for i in search_params do 
             base_url += i
+        end 
+
+        for search in search_params do 
+            new_base_url += search
         end 
 
         games =  RestClient.get("#{base_url}")
