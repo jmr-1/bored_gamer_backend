@@ -32,7 +32,7 @@ class Api::V1::GamesController < ApplicationController
 
         new_games = RestClient.get("#{new_base_url}")
         new_games_hash = JSON.parse(new_games)
-
+        #end of new API section 
 
         #current version, to be changed 2020.8.1
         games =  RestClient.get("#{base_url}")
