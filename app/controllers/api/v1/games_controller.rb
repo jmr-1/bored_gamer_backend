@@ -4,6 +4,7 @@ require 'pry'
 
 class Api::V1::GamesController < ApplicationController
 
+    #check to make sure this doesn't require token 
     skip_before_action :authorized, only: [:index, :show, :db_show, :searched_games, :getResponse, :get_searched_games]
 
 
