@@ -1,5 +1,14 @@
 # README
 
+Current TODO:
+- Commit before deploying to heroku with PostgreSQL
+
+
+Future TODO:
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
