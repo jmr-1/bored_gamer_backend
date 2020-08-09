@@ -49,7 +49,8 @@ class Api::V1::GamesController < ApplicationController
         #search paramaters should be an array of search strings
         search_params = []
         
-
+        #instead of an endless list of if-then statements, perhaps create a dictionary?
+        #or map each key to a url string?
         if(params[:gameID])
             search_params << "&ids=#{params[:gameID]}"
         end 
