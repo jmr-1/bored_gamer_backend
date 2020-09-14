@@ -5,10 +5,9 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-#For development only.  Remember to config for CORS with front end later
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://bored-gamer-meetup.herokuapp.com/'
+    origins ['https://bored-gamer-meetup.herokuapp.com', 'http://localhost:3001']
 
     resource '*',
       headers: :any,
