@@ -23,6 +23,10 @@ Rails.application.routes.draw do
       get '/invites/user/:id', to: 'invites#user_invites'
       get '/invites', to: 'invites#index'
       post '/invites/reply', to: 'invites#reply'
+
+      get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+        !request.xhr? && request.format.html?
+      end
     end
   end 
 end
