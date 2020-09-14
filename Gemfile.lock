@@ -110,19 +110,11 @@ GEM
     nio4r (2.5.3)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
-<<<<<<< HEAD
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
     puma (4.3.6)
-=======
-    pg (1.2.2)
-    pry (0.12.2)
-      coderay (~> 1.1.0)
-      method_source (~> 0.9.0)
-    puma (4.3.5)
->>>>>>> dcbfc8d6e236810f5ac7ec946260734ac1fb2469
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-cors (1.1.1)
@@ -186,11 +178,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-<<<<<<< HEAD
     zeitwerk (2.4.0)
-=======
-    zeitwerk (2.3.0)
->>>>>>> dcbfc8d6e236810f5ac7ec946260734ac1fb2469
 
 PLATFORMS
   ruby
