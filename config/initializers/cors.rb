@@ -8,7 +8,7 @@
 #For development only.  Remember to config for CORS with front end later
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins '*'
+    origins 'https://bored-gamer-meetup.herokuapp.com/'
 
     resource '*',
       headers: :any,
