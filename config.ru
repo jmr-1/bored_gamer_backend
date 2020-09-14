@@ -5,8 +5,6 @@ require 'rack/cors'
 
 run Rails.application
 
-
-require 'rack/cors'
 use Rack::Cors do
 
   allow do
