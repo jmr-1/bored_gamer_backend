@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: bored_game_backend_production
+  database: bored_game_backend
   username: bored_game_backend
   password: <%= ENV['BORED_GAME_BACKEND_DATABASE_PASSWORD'] %>
