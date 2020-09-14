@@ -10,7 +10,7 @@ require 'rack/cors'
 use Rack::Cors do
 
   allow do
-    origins 'https://bored-gamer-meetup.herokuapp.com/'
+    origins ['https://bored-gamer-meetup.herokuapp.com', 'http://localhost:3000']
     resource '*', 
         :headers => :any, 
         :methods => [:get, :post, :delete, :put, :options]
