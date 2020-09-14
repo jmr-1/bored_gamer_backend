@@ -2,6 +2,10 @@ class ApplicationController < ActionController::API
 
     before_action :authorized
 
+    def fallback_index_html
+        render :file => 'public/index.html'
+    end
+
     def encode_token(payload)
 
         JWT.encode(payload, Rails.application.credentials.project[:jwt])
