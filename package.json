@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "bored gamer collection and meeting app",
   "main": "index.js",
-  "repository": "git@github.com:JohnLouisRumingan/bored_gamer_backend.git",
+  "repository": {
+    "url": "https://github.com/JohnLouisRumingan/bored_gamer_backend.git",
+    "type": "git"
+  },
   "author": "John-Louis Rumingan",
   "license": "MIT", 
   "scripts": {
