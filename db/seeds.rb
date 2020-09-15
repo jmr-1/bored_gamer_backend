@@ -8,7 +8,7 @@
 
 require 'pry'
 
-api_key = Rails.application.credentials.project[:api_key]
+# api_key = Rails.application.credentials.project[:api_key]
 
 #Used these for testing, distribute these on unit model tests
 # game = Game.new(name: "spirit island")
