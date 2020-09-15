@@ -9,9 +9,9 @@ class Api::V1::GamesController < ApplicationController
 
     def getResponse(search_params=[])
 
-        api_key = Rails.application.credentials.project[:api_key]
+        # api_key = Rails.application.credentials.project[:api_key]
         # move api key to environment for production
-        # api_key = ENV["MY_API_KEY"]
+        api_key = ENV["MY_API_KEY"]
         client_id = "client_id=#{api_key}"
 
         # Change base_url on 2020.8.1 in order to main functionality.        
