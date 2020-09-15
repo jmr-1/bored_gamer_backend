@@ -10,7 +10,7 @@
   "author": "John-Louis Rumingan",
   "license": "MIT", 
   "scripts": {
-    "build": "cd bored_front && yarn install && yarn build && cd .. && cd bored_game_backend",
+    "build": "cd .. && cd bored_front && npm install && cd .. && cd bored_game_backend",
     "deploy": "cp -a client/build/. public/",
     "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
   },
