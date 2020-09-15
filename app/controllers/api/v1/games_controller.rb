@@ -16,10 +16,7 @@ class Api::V1::GamesController < ApplicationController
         api_key = Rails.application.credentials.project[:api_key]
         client_id = "client_id=#{api_key}"
 
-        
-        # As of 2020.8.1, API for board game atlas will be changing from www. to api.
-        # Change base_url on 2020.8.1 in order to main functionality.
-        
+        #Changed url for api on 2020.8.1
         new_base_url = "https://api.boardgameatlas.com/api/search?"+client_id
         
         for search in search_params do 
@@ -28,20 +25,6 @@ class Api::V1::GamesController < ApplicationController
         
         new_games = RestClient.get("#{new_base_url}")
         return new_games_hash = JSON.parse(new_games)
-        #end of new API section 
-        
-        #old base_url version, changed 2020.07.31
-        # base_url = "https://www.boardgameatlas.com/api/search?"+client_id
-
-        # for i in search_params do 
-        #     base_url += i
-        # end 
-        
-        #old version, changed 2020.07.31
-        # games =  RestClient.get("#{base_url}")
-        # games_hash = JSON.parse(games)
-        # return games_hash 
-        #end of old version 
     end 
 
 
