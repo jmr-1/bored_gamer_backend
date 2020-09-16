@@ -132,7 +132,5 @@ class Api::V1::MeetupsController < ApplicationController
         end 
 
         render json: {meetup_details: meetup, host: meetup.user, participants: meetup.users, collection: meetup_collection}
-
-        # render json: {status: "FE-BE link established", user: user, meetup: meetup, chosenGames: params[:chosenGames], meetupGames: meetup.collections}
     end 
 end
