@@ -2,6 +2,7 @@
 
 Deployment notes:
 - Heroku server currently offline: Use ```heroku maintenance:off``` and ```heroku ps:scale web=1``` when maintenance finished
+- Testing heroku deployment from branch
 
 Current TODO:
 - Test bundle update 
