@@ -34,7 +34,7 @@ module BoredGameBackend
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    Rails.application.config.hosts << "bored-gamer-meetup.herokuapp.com/"
+    Rails.application.config.hosts << "bored-gamer-meetup.herokuapp.com"
 
     # config.middleware.insert_before 0, Rack::Cors do
     #   allow do
