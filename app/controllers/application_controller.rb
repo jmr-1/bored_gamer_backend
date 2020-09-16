@@ -8,7 +8,9 @@ class ApplicationController < ActionController::API
 
     def encode_token(payload)
 
-        JWT.encode(payload, Rails.application.credentials.project[:jwt])
+        # JWT.encode(payload, Rails.application.credentials.project[:jwt]) #development
+        #production, using environment variable:
+        JWT.encode(payload, ENV["JWT_TOKEN"])
 
         #payload => {beef: 'steak'}
         #jwt_string:
@@ -26,7 +28,9 @@ class ApplicationController < ActionController::API
             token = auth_header.split(' ')[1]
             #headers: {'Authorization': 'Bearer <token>'}
             begin
-                JWT.decode(token, Rails.application.credentials.project[:jwt], true, algorithm: 'HS256')
+                # JWT.decode(token, Rails.application.credentials.project[:jwt], true, algorithm: 'HS256') #development
+                JWT.decode(token, ENV["JWT_TOKEN"], true, algorithm: 'HS256') #production
+
              # JWT.decode => [{ "beef"=>"steak" }, { "alg"=>"HS256" }]
             rescue JWT::DecodeError
                 nil
