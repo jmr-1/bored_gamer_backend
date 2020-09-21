@@ -77,11 +77,13 @@ class Api::V1::MeetupsController < ApplicationController
         user = User.find_by(id: params[:user])
         meetup = Meetup.find_by(id: params[:meetup])
         result = meetup.users.find{|member| member == user }
-        if(!result)
-            meetup.users << user
-        elsif(result)
-            meetup.users.delete(user)
-        end 
+
+        result ? meetup.users.delete(user) : meetup.users << user
+        # if(!result)
+        #     meetup.users << user
+        # elsif(result)
+        #     meetup.users.delete(user)
+        # end 
 
         meetups = Meetup.all 
         detailed_array = []
