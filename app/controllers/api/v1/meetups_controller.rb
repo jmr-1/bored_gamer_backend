@@ -104,6 +104,7 @@ class Api::V1::MeetupsController < ApplicationController
             detailed_array << newObj
         end 
 
+        # why return the entire array? Just return the modified object like below
         render json: detailed_array
     end 
 
