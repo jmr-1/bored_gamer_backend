@@ -29,59 +29,56 @@ class Api::V1::GamesController < ApplicationController
     def searched_games
 
         search_params = []
-        # test_params = []
+        test_params = []
 
-        # params_dictionary = {
-        #     gameID: "&ids=#{value}",
-        #     kickstarter: "&kickstarter=true",
-        #     designer: "&designer=#{value}",
-        #     title: "&name=#{value}",
-        #     min_players: "&min_players=#{value}",
-        #     max_players: "&max_players=#{value}",
-        #     year_published: "&year_published=#{value}",
-        #     random: "&random=true",
-        #     fuzzy_match: "&fuzzy_match=true"
-        # }
+        params_dictionary = {
+            gameID: "&ids=",
+            kickstarter: "&kickstarter=",
+            designer: "&designer=",
+            title: "&name=",
+            min_players: "&min_players=",
+            max_players: "&max_players=",
+            year_published: "&year_published=",
+            random: "&random=",
+            fuzzy_match: "&fuzzy_match="
+        }
 
-        # params.each do |search, value|
-        #     if(params_dictionary[:search])
-        #     test_params << params_dictionary[:search]
-        #     end 
-        # end 
-
-        # binding.pry
+        params.each do |search, value|
+             test_params << insert_search_string(params_dictionary[search], value)
+        end 
         
         #instead of an endless list of if-then statements, perhaps create a dictionary?
         #or map each key to a url string?
-        if(params[:gameID])
-            search_params << "&ids=#{params[:gameID]}"
-        end 
-        if(params[:kickstarter])
-            search_params << "&kickstarter=true"
-        end 
-        if(params[:designer])
-            search_params << "&designer=#{params[:designer]}"
-        end 
-        if(params[:title])
-            search_params << "&name=#{params[:title]}"
-        end 
-        if(params[:min_players])
-            search_params << "&min_players=#{params[:min_players]}"
-        end 
-        if(params[:max_players])
-            search_params << "&max_players=#{params[:max_players]}"
-        end 
-        if(params[:year_published])
-            search_params << "&year_published=#{params[:year_published]}"
-        end 
-        if(params[:random])
-            search_params << "&random=true"
-        end 
-        if(params[:fuzzy_match])
-            search_params << "&fuzzy_match=true"
-        end 
+        # if(params[:gameID])
+        #     search_params << "&ids=#{params[:gameID]}"
+        # end 
+        # if(params[:kickstarter])
+        #     search_params << "&kickstarter=true"
+        # end 
+        # if(params[:designer])
+        #     search_params << "&designer=#{params[:designer]}"
+        # end 
+        # if(params[:title])
+        #     search_params << "&name=#{params[:title]}"
+        # end 
+        # if(params[:min_players])
+        #     search_params << "&min_players=#{params[:min_players]}"
+        # end 
+        # if(params[:max_players])
+        #     search_params << "&max_players=#{params[:max_players]}"
+        # end 
+        # if(params[:year_published])
+        #     search_params << "&year_published=#{params[:year_published]}"
+        # end 
+        # if(params[:random])
+        #     search_params << "&random=true"
+        # end 
+        # if(params[:fuzzy_match])
+        #     search_params << "&fuzzy_match=true"
+        # end 
 
-        result = self.getResponse(search_params)
+        # result = self.getResponse(search_params)
+        result = self.getResponse(test_params)
         render json: {parameters: params, result: result["games"], random: result["game"]}
     end 
 
@@ -102,7 +99,10 @@ class Api::V1::GamesController < ApplicationController
         render json: game
     end 
     
-    
+    private
 
+    def insert_search_string(search_string="", value="")
+        return "#{search_string}#{value}"
+    end 
      
 end 
