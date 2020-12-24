@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'welcome#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api do
@@ -23,6 +24,10 @@ Rails.application.routes.draw do
       get '/invites/user/:id', to: 'invites#user_invites'
       get '/invites', to: 'invites#index'
       post '/invites/reply', to: 'invites#reply'
+
+      get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+        !request.xhr? && request.format.html?
+      end
     end
   end 
 end

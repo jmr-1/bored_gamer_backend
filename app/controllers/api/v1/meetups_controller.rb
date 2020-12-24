@@ -77,32 +77,37 @@ class Api::V1::MeetupsController < ApplicationController
         user = User.find_by(id: params[:user])
         meetup = Meetup.find_by(id: params[:meetup])
         result = meetup.users.find{|member| member == user }
-        if(!result)
-            meetup.users << user
-        elsif(result)
-            meetup.users.delete(user)
-        end 
 
-        meetups = Meetup.all 
-        detailed_array = []
-        meetups.each do |meetup|
-            newObj = {}
-            newObj["meetup_details"] = meetup
-            newObj["host"] = meetup.user
-            newObj["participants"] = meetup.users
+        result ? meetup.users.delete(user) : meetup.users << user
+        # if(!result)
+        #     meetup.users << user
+        # elsif(result)
+        #     meetup.users.delete(user)
+        # end 
+
+        # meetups = Meetup.all 
+        # detailed_array = []
+        # meetups.each do |meetup|
+        #     newObj = {}
+        #     newObj["meetup_details"] = meetup
+        #     newObj["host"] = meetup.user
+        #     newObj["participants"] = meetup.users
             
-            meetup_collection = []
-            meetup.collections.each do |collection|
-                collObj = {}
-                collObj["owner"] = collection.user
-                collObj["game"] = collection.game
-                meetup_collection << collObj
-            end 
-            newObj["collection"] = meetup_collection
-            detailed_array << newObj
-        end 
+        #     meetup_collection = []
+        #     meetup.collections.each do |collection|
+        #         collObj = {}
+        #         collObj["owner"] = collection.user
+        #         collObj["game"] = collection.game
+        #         meetup_collection << collObj
+        #     end 
+        #     newObj["collection"] = meetup_collection
+        #     detailed_array << newObj
+        # end 
 
-        render json: detailed_array
+        # render json: detailed_array
+
+        # why return the entire array? Just return the modified object like below
+        render json: {meetup_details: meetup, host: meetup.user, participants: meetup.users, collection: meetup_collections} 
     end 
 
 
@@ -132,7 +137,5 @@ class Api::V1::MeetupsController < ApplicationController
         end 
 
         render json: {meetup_details: meetup, host: meetup.user, participants: meetup.users, collection: meetup_collection}
-
-        # render json: {status: "FE-BE link established", user: user, meetup: meetup, chosenGames: params[:chosenGames], meetupGames: meetup.collections}
     end 
 end

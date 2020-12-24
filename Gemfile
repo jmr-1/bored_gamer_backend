@@ -50,3 +50,5 @@ gem 'pry'
 
 #RestClient for JSON parsing
 gem 'rest-client'
+
+gem "google-cloud-storage", "~> 1.8", require: false
