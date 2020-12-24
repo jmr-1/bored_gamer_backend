@@ -12,12 +12,6 @@ class Api::V1::GamesController < ApplicationController
         # move api key to environment for production
         # api_key = ENV["MY_API_KEY"]
         client_id = "client_id=#{api_key}"
-<<<<<<< HEAD
-
-        #Changed url for api on 2020.8.1
-=======
-       
->>>>>>> master
         new_base_url = "https://api.boardgameatlas.com/api/search?"+client_id
         
         for search in search_params do 
