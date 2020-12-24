@@ -150,10 +150,7 @@ GEM
     nio4r (2.5.3)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
-<<<<<<< HEAD
-=======
     os (1.1.1)
->>>>>>> master
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
